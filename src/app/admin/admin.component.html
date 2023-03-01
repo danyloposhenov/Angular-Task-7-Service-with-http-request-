@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="title">Blogs</div>
+  <div class="container">
+    <input type="text" id="title" placeholder="title here.." [(ngModel)]="title">
+    <textarea name="" id="text" placeholder="text here.." [(ngModel)]="text"></textarea>
+    <input type="text" id="author" placeholder="author here.." [(ngModel)]="author">
+    <button id="btnAdd" (click)="addBlog()" *ngIf="btnAdd">Add</button>
+    <button id="saveAdd" (click)="saveBlog()" *ngIf="btnSave">Save blog</button>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Author</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr *ngFor="let blog of blogs">
+            <td> {{ blog.id }} </td>
+            <td> {{ blog.title }} </td>
+            <td> {{ blog.text }} </td>
+            <td> {{ blog.author }} </td>
+            <td>
+              <button class="edit" (click)="editBlog(blog)">Edit</button>
+            </td>
+            <td>
+              <button class="delete" (click)="deleteBlog(blog)">Delete</button>
+            </td>
+          </tr>
+          <!-- <tr *ngFor="let person of persons; let i = index">
+            <td>{{ i+1 }}</td>
+            <td>{{ person.login }}</td>
+            <td>{{ person.password }}</td>
+            <td>{{ person.email }}</td>
+            <td>
+              <button class="edit" (click)="edit(i)">Edit</button>
+            </td>
+            <td>
+              <button class="delete" (click)="delete(i)" [disabled]="editStatus"
+                [ngClass]="{'modal': modal}">Delete</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
